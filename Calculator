@@ -394,7 +394,7 @@ public:
 
 void printOpening()
 {
-    cout << "WELCOME TO IMAM'S CALCULATOR~" << endl << endl;
+    cout << "WELCOME TO IMAM'S SECOND CALCULATOR~" << endl << endl;
     cout << "Here is a litle example on how to use this calculator" << endl;
     cout << "--Example of trigonometry-- " << endl;
     cout << "~ s30 means sin(30)" << endl;
