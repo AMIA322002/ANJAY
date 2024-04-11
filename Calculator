@@ -117,7 +117,7 @@ private:
 public:
     Calculator()
     {
-        string infix = "";
+        infix = "";
     }
     Calculator(string userExpr)
     {
@@ -210,8 +210,6 @@ public:
 
     double operate(double valueOne, double valueTwo, char op)
     {
-
-
         switch (op) {
         case '+':
             return valueOne + valueTwo;
@@ -228,48 +226,55 @@ public:
         case '^':
             return (double)pow(valueOne, valueTwo);
             break;
+        default:
+            return 0; // Return default value or handle error
+            break;
         }
     }
 
     double trigonometry(char character, double value)
     {
-        double sinus = sin(value);
-        double cosin = cos(value);
-        double tangent = tan(value);
+        double result = 0.0;
         switch(character) {
-        case 's':
-            return sinus;
-            break;
-        case 'c':
-            return cosin;
-            break;
-        case 't':
-            return tangent;
-            break;
+            case 's':
+                result = sin(value);
+                break;
+            case 'c':
+                result = cos(value);
+                break;
+            case 't':
+                result = tan(value);
+                break;
+            default:
+                cout << "Invalid trigonometric function." << endl;
+                break;
         }
+        return result;
     }
 
     double extended(char character, double value)
     {
-        double x = sqrt(value);
-        double y = log10(value);
-        double z = log(value);
+        double result = 0.0;
         switch(character) {
-        case 'x':
-            return x;
-            break;
-        case 'y':
-            return y;
-            break;
-        case 'z':
-            return z;
-            break;
+            case 'x':
+                result = sqrt(value);
+                break;
+            case 'y':
+                result = log10(value);
+                break;
+            case 'z':
+                result = log(value);
+                break;
+            default:
+                cout << "Invalid extended function." << endl;
+                break;
         }
+        return result;
     }
 
     double eval()
-    {1121
-        ;double finalAnswer;
+    {
+        double finalAnswer;
         for (size_t i = 0; i < infix.length(); i++) {
             if (isOperand(infix[i]) == true) {
                 double currentNumber = 0;
@@ -285,10 +290,7 @@ public:
                             } else break;
                         }
                         double calculatedDec= (double)dec / (double)(pow(10, counter));
-                        // cout << currentNumber << endl;
-                        // cout << fixed << setprecision(5) << calculatedDec << endl;
                         currentNumber += calculatedDec;
-
                     } else {
                         if (infix[i]!='p') {
                             currentNumber = 10 * currentNumber + (double)(infix[i] - '0');
